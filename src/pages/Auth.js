@@ -1,6 +1,51 @@
-import React from "react";
+import React, {useState} from "react";
+import SignUpForm from "../components/auth/SignUpForm";
 
-const Auth = () => (
+const Auth = () => {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const onChangeName = (event) => {
+    setName(event.target.value)
+  }
+
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const onChangePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const onSignUpHandler = async (event) => {
+    event.preventDefault()
+    console.log("hi")
+
+    const body = {
+      "user": {
+        "username": name,
+        "email": email,
+        "password": password
+      }
+    }
+
+    const response = await fetch("https://conduit.productionready.io/api/users", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ...body
+      })
+    })
+    const content = await response.json()
+    const token = await content.user.token
+    localStorage.setItem("token", token)
+  }
+
+  return (
     <div className="auth-page">
       <div className="container page">
         <div className="row">
@@ -12,25 +57,17 @@ const Auth = () => (
             <ul className="error-messages">
               <li>That email is already taken</li>
             </ul>
-            <form>
-              <fieldset className="form-group">
-                <input className="form-control form-control-lg" type="text" placeholder="Your Name"/>
-              </fieldset>
-              <fieldset className="form-group">
-                <input className="form-control form-control-lg" type="text" placeholder="Email"/>
-              </fieldset>
-              <fieldset className="form-group">
-                <input className="form-control form-control-lg" type="password" placeholder="Password"/>
-              </fieldset>
-              <button className="btn btn-lg btn-primary pull-xs-right">
-                Sign up
-              </button>
-            </form>
+            <SignUpForm
+              onChangeName={onChangeName}
+              onChangeEmail={onChangeEmail}
+              onChangePassword={onChangePassword}
+              onSignUpHandler={onSignUpHandler}
+            />
           </div>
         </div>
       </div>
     </div>
   )
-;
+}
 
 export default Auth;

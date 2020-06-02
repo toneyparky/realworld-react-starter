@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import Sidebar from "../components/Sidebar";
-import FeedContainer from "../components/FeedContainer";
-import Banner from "../components/Banner";
+import Sidebar from "../components/home/Sidebar";
+import FeedContainer from "../components/home/FeedContainer";
+import Banner from "../components/home/Banner";
 
 const Home = () => {
   const [article, setArticle] = useState([]);
@@ -19,7 +19,8 @@ const Home = () => {
     setArticle(content.articles);
   }
 
-  const onReadMyFeedArticles = async () => {
+  const onReadMyFeedArticles = async (event) => {
+    event.preventDefault()
     const response = await fetch("https://conduit.productionready.io/api/articles/feed", {
       method: "GET",
       headers: {
