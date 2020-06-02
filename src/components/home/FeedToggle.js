@@ -7,7 +7,7 @@ function FeedToggle({onReadArticles, onReadMyFeedArticles}) {
         <li className="nav-item" onClick={() => onReadMyFeedArticles()}>
           <a className="nav-link disabled">Your Feed</a>
         </li>
-        <li className="nav-item" onClick={() => onReadArticles()}>
+        <li className="nav-item" onClick={(event) => onReadArticles(event)}>
           <a className="nav-link active">Global Feed</a>
         </li>
       </ul>
