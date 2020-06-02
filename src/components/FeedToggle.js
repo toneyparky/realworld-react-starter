@@ -1,14 +1,14 @@
 import React from 'react';
 
-function FeedToggle(props) {
+function FeedToggle({onReadArticles, onReadMyFeedArticles}) {
   return (
     <div className="feed-toggle">
       <ul className="nav nav-pills outline-active">
-        <li className="nav-item">
-          <a className="nav-link disabled" href="">Your Feed</a>
+        <li className="nav-item" onClick={() => onReadMyFeedArticles()}>
+          <a className="nav-link disabled">Your Feed</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link active" href="">Global Feed</a>
+        <li className="nav-item" onClick={() => onReadArticles()}>
+          <a className="nav-link active">Global Feed</a>
         </li>
       </ul>
     </div>
