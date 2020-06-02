@@ -20,19 +20,19 @@ const Home = () => {
   }
 
   const onReadMyFeedArticles = async (event) => {
-    event.preventDefault()
     const response = await fetch("https://conduit.productionready.io/api/articles/feed", {
       method: "GET",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Token ${localStorage.getItem("token")}`
       },
     });
     const content = await response.json();
     setArticle(content.articles);
   }
 
-  onReadArticles()
+  // onReadArticles()
 
   return (
     <div className="home-page">
