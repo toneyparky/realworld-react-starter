@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function ArticlePreviewTemplate(article) {
+function ArticlePreviewTemplate({article, index}) {
   return (
-    <div className="article-preview">
+    <div className="article-preview" key={index}>
       <div className="article-meta">
         <Link to={"/profiles/" + article.author.username}><img src={article.author.image}/></Link>
         <div className="info">

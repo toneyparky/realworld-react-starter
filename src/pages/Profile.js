@@ -48,7 +48,7 @@ const Profile = ({match}) => {
     loadArticles()
   }, [user])
 
-  articlePreviewTemplate = articles.map((article) => ArticlePreviewTemplate(article));
+  articlePreviewTemplate = articles.map((article, index) => ArticlePreviewTemplate({article, index}));
 
   return (user &&
     <div className="profile-page">
