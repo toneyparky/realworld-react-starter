@@ -1,35 +1,72 @@
-import React from "react";
+import React, {useState} from "react";
+import ArticleForm from "../components/editor/ArticleForm";
 
-const Editor = () => (
-  <div className="editor-page">
-    <div className="container page">
-      <div className="row">
+const Editor = () => {
+  const [title, setTitle] = useState(null)
+  const [description, setDescription] = useState(null)
+  const [body, setBody] = useState(null)
+  const [tagList, setTagList] = useState([])
 
-        <div className="col-md-10 offset-md-1 col-xs-12">
-          <form>
-            <fieldset>
-              <fieldset className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="Article Title"/>
-              </fieldset>
-              <fieldset className="form-group">
-                <input type="text" className="form-control" placeholder="What's this article about?"/>
-              </fieldset>
-              <fieldset className="form-group">
-                <textarea className="form-control" rows="8" placeholder="Write your article (in markdown)"></textarea>
-              </fieldset>
-              <fieldset className="form-group">
-                <input type="text" className="form-control" placeholder="Enter tags"/>
-                <div className="tag-list">
-                </div>
-              </fieldset>
-              <button className="btn btn-lg pull-xs-right btn-primary" type="button">
-                Publish Article
-              </button>
-            </fieldset>
-          </form>
+  const onTitleHandler = (event) => {
+    setTitle(event.target.value)
+    console.log(title)
+  }
+
+  const onDescriptionHandler = (event) => {
+    setDescription(event.target.value)
+    console.log(description)
+  }
+
+  const onBodyHandler = (event) => {
+    setBody(event.target.value)
+  }
+
+  const onTagListHandler = (event) => {
+    setTagList(event.target.value.split(","))
+  }
+
+  const onPublishHandler = async (event) => {
+    event.preventDefault()
+    const data = {
+      "article": {
+        "title": title,
+        "description": description,
+        "body": body,
+        "tagList": tagList
+      }
+    }
+
+    const response = await fetch("https://conduit.productionready.io/api/articles", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": `Token ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        ...data
+      })
+    })
+
+    const article = await response.json()
+    console.log(article + "@@")
+  }
+
+
+  return (
+    <div className="editor-page">
+      <div className="container page">
+        <div className="row">
+          <ArticleForm
+            onTitleHandler={onTitleHandler}
+            onDescriptionHandler={onDescriptionHandler}
+            onBodyHandler={onBodyHandler}
+            onTagListHandler={onTagListHandler}
+            onPublishHandler={onPublishHandler}
+          />
         </div>
       </div>
-    </div>
-  </div>);
+    </div>)
+};
 
 export default Editor;
