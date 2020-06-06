@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Sidebar from "../components/home/Sidebar";
 import FeedContainer from "../components/home/FeedContainer";
 import Banner from "../components/home/Banner";
@@ -31,7 +31,9 @@ const Home = () => {
     setArticle(content.articles);
   }
 
-  // onReadArticles()
+  useEffect(() => {
+    onReadArticles()
+  }, [])
 
   return (
     <div className="home-page">
