@@ -1,14 +1,18 @@
 import React from 'react';
 
-function ArticleContent(props) {
+function ArticleContent({article}) {
+  const firstLine = article.body.split(".")[0];
+  const restLines = article.body
+
+
   return (
     <div className="row article-content">
       <div className="col-md-12">
         <p>
-          Web development technologies have evolved at an incredible clip over the past few years.
+          {article.description}
         </p>
-        <h2 id="introducing-ionic">Introducing RealWorld.</h2>
-        <p>It's a great solution for learning how other frameworks work.</p>
+        <h2 id="introducing-ionic">{firstLine}</h2>
+        <p>{restLines}</p>
       </div>
     </div>
   );

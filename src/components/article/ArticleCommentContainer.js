@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ArticleCommentContainer(props) {
+function ArticleCommentContainer({article}) {
   return (
     <div className="row">
       <div className="col-xs-12 col-md-8 offset-md-2">

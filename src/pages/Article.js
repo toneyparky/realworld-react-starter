@@ -5,7 +5,7 @@ import ArticleAction from "../components/article/ArticleAction";
 import ArticleCommentContainer from "../components/article/ArticleCommentContainer";
 
 const Article = ({match}) => {
-  const [article, setArticle] = useState();
+  const [article, setArticle] = useState(null);
   const slug = match.params.slug
 
   useEffect(() => {
@@ -24,14 +24,14 @@ const Article = ({match}) => {
   }, [])
 
 
-  return (
+  return (article &&
     <div className="article-page">
-      <ArticleBanner/>
+      <ArticleBanner article={article}/>
       <div className="container page">
-        <ArticleContent/>
+        <ArticleContent article={article}/>
         <hr/>
-        <ArticleAction/>
-        <ArticleCommentContainer/>
+        <ArticleAction article={article}/>
+        <ArticleCommentContainer article={article}/>
       </div>
     </div>
   )
