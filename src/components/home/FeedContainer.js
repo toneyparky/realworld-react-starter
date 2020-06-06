@@ -1,6 +1,6 @@
 import React from 'react';
 import FeedToggle from "./FeedToggle";
-import ArticlePreviewTemplate from "./ArticlePreviewTemplate";
+import ArticlePreviewTemplate from "../article/ArticlePreviewTemplate";
 
 function FeedContainer({articles, onReadArticles, onReadMyFeedArticles}) {
 

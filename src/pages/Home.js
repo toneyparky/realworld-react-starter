@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Sidebar from "../components/home/Sidebar";
 import FeedContainer from "../components/home/FeedContainer";
-import Banner from "../components/home/Banner";
+import MainBanner from "../components/home/MainBanner";
 
 const Home = () => {
   const [article, setArticle] = useState([]);
@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      <Banner/>
+      <MainBanner/>
       <div className="container page">
         <div className="row">
           <FeedContainer articles={article} onReadArticles={onReadArticles}

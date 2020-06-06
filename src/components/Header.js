@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => (
   <nav className="navbar navbar-light">
     <div className="container">
-      <a className="navbar-brand" href="/">conduit</a>
+      <a className="navbar-brand" href="/">TONEYLOG</a>
       <ul className="nav navbar-nav pull-xs-right">
         <li className="nav-item">
           <a className="nav-link active" href="/">Home</a>

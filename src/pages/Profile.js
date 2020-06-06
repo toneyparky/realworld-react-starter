@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import UserInfoCard from "../components/profile/UserInfoCard";
-import ArticlePreviewTemplate from "../components/home/ArticlePreviewTemplate";
+import ArticlePreviewTemplate from "../components/article/ArticlePreviewTemplate";
 
 const Profile = ({match}) => {
   const [user, setUser] = useState(null);
