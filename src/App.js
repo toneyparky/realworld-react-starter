@@ -18,13 +18,11 @@ const App = () => {
     <>
       <Header/>
       <Route path="/" component={Home} exact/>
-      <Route path="/article" component={Article} exact/>
       <Route path="/article/:slug" component={Article} exact/>
       <Route path="/editor" component={Editor} exact/>
       <Route path="/settings" component={Settings} exact/>
       <Route path="/auth" component={Auth} exact/>
       <Route path="/login" component={Login} exact/>
-      {/*<Route path="/profile" component={Profile} exact/>*/}
       <Route path="/profiles/:username" component={Profile}/>
       <Footer/>
     </>
